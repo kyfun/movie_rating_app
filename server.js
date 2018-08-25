@@ -4,12 +4,23 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const passportJWT = require('passport-jwt');
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+const jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
+jwtOptions.secretOrKey = 'movieratingapplicationsecretkey';
+
 const app = express();
 const router = express.Router();
+const serveStatic = require('serve-static');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(passport.initialize());
 
 //connect to mongodb
 mongoose.connect('mongodb://localhost/movie_rating_app', function () {
@@ -27,6 +38,7 @@ fs.readdirSync("controllers").forEach(function (file) {
     route.controller(app)
   }
 })
+app.use(serveStatic(__dirname + "/dist"));
 
 router.get('/', function (req, res) {
   res.json({
