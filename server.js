@@ -16,6 +16,7 @@ jwtOptions.secretOrKey = 'movieratingapplicationsecretkey';
 const app = express();
 const router = express.Router();
 const serveStatic = require('serve-static');
+const history = require('connect-history-api-fallback');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ fs.readdirSync("controllers").forEach(function (file) {
     route.controller(app)
   }
 })
+app.use(history());
 app.use(serveStatic(__dirname + "/dist"));
 
 router.get('/', function (req, res) {

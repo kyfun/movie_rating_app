@@ -30,7 +30,7 @@ export default {
             email: this.email,
             password: this.password,
           },
-          url: 'http://localhost:8081/users/login',
+          url: '/login',
           headers: {
             'Content-Type': 'application/json',
           },
