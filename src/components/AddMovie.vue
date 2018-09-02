@@ -1,7 +1,7 @@
 <template>
   <v-form v-model="valid" ref="form" lazy-validation>
     <v-text-field label="Movie Name" v-model="name" :rules="nameRules" required></v-text-field>
-    <v-text-field name="input-7-1" label="Movie Description" v-model="description" multi-line></v-text-field>
+    <v-textarea name="input-7-1" label="Movie Description" v-model="description" multi-line></v-textarea>
     <v-select label="Movie Release Year" v-model="release_year" required :rules="releaseRules" :items="years"></v-select>
     <v-text-field label="Movie Genre" v-model="genre" required :rules="genreRules"></v-text-field>
     <v-btn @click="submit" :disabled="!valid">

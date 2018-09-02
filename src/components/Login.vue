@@ -11,6 +11,7 @@
 
 <script>
 import axios from 'axios';
+import bus from './../bus';
 
 export default {
   data: () => ({
@@ -30,7 +31,7 @@ export default {
             email: this.email,
             password: this.password,
           },
-          url: '/login',
+          url: 'http://localhost:8081/users/login',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -38,13 +39,14 @@ export default {
         .then((response) => {
           window.localStorage.setItem('auth', response.data.token);
           this.$swal('Great!', 'You are ready to start!', 'success');
+          bus.$emit('refreshUser');
           this.$router.push({
             name: 'Home'
           });
         })
         .catch((error) => {
-          const message = error.response.data.message;
-          this.$swal('Oh oo!', `${message}`, 'error');
+          const messages = error.response.data.messages;
+          this.$swal('Oh oo!', `${messages}`, 'error');
           this.$router.push({
             name: 'Login'
           });
