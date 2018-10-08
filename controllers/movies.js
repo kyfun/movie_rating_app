@@ -1,6 +1,5 @@
 const MovieSchema = require('../models/Movie.js');
 const Rating = require('../models/Rating.js');
-//const passport = require('passport');
 
 module.exports.controller = (app) => {
   // fetch all movies
@@ -61,4 +60,11 @@ module.exports.controller = (app) => {
       res.send(movie);
     });
   });
+
+  // send a dummy test
+  app.get("/dummy_test", function (req, res) {
+    res.send({
+      name: 'John'
+    })
+  })
 };
