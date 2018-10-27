@@ -1,6 +1,6 @@
 # movie_rating_app
 
-> A Vue.js project
+> A Vue.js project dated on 27 OCT 2018
 
 ## Build Setup
 
