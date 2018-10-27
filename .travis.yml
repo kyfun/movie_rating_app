@@ -4,4 +4,5 @@ node_js:
 - "10.7.0"
 before_script:
 - npm install
-script: npm run unit
+script:
+- npm run unit
