@@ -1,5 +1,5 @@
 module.exports = {
-    DB: 'mongodb://localhost/movie_rating_app',
+    DB: 'mongodb://movie_sa:movie_sa21@ds245680.mlab.com:45680/movie_rating_app',
     SECRET: 'movieratingappsecretkey',
     FACEBOOK_APP_ID: '533364263767715',
     FACEBOOK_APP_SECRET: 'ebe3d279e24b6a4082d0e5f7f40e280f',
